@@ -1,4 +1,4 @@
-package com.example.kumasuta.Stamp;
+package com.CILiberalArts2025.kumasuta.Stamp;
 
 import android.app.ActionBar;
 import android.content.Context;
