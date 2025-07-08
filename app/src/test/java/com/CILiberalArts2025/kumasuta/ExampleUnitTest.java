@@ -1,4 +1,4 @@
-package com.example.kumasuta;
+package com.CILiberalArts2025.kumasuta;
 
 import org.junit.Test;
 
