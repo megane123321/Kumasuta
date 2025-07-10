@@ -1,10 +1,8 @@
-package com.CILiberalArts2025.kumasuta.Stamp;
+package com.knct_ci4_2025.kumasuta.stamp;
 
-import android.app.ActionBar;
 import android.content.Context;
 import android.view.View;
 import android.widget.TextView;
-
 
 import androidx.constraintlayout.widget.Constraints;
 
