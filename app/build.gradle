@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace 'com.CILiberalArts2025.kumasuta'
+    namespace 'com.knct_ci4_2025.kumasuta'
     compileSdk 35
 
     defaultConfig {
-        applicationId "com.CILiberalArts2025.kumasuta"
+        applicationId "com.knct_ci4_2025.kumasuta"
         minSdk 24
         targetSdk 35
         versionCode 1

@@ -1,4 +1,4 @@
-package com.CILiberalArts2025.kumasuta;
+package com.knct_ci4_2025.kumasuta;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.CILiberalArts2025.kumasuta", appContext.getPackageName());
+        assertEquals("com.knct_ci4_2025.kumasuta", appContext.getPackageName());
     }
 }
