@@ -4,6 +4,15 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class StampCard {
+
+    public final static int STAMP_CARD_WID=3;
+    public final static int STAMP_CARD_HEI=5;
+
+    public final static int STAMP_NUM;
+
+    static{
+        STAMP_NUM=STAMP_CARD_WID*STAMP_CARD_HEI;
+    }
     ArrayList<Stamp> card;
 
     public StampCard(Stamp... stamps){

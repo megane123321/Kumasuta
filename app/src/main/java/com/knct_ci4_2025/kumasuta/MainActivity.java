@@ -14,14 +14,10 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.knct_ci4_2025.kumasuta.stamp.Stamp;
-import com.knct_ci4_2025.kumasuta.stamp.StampId;
+import com.knct_ci4_2025.kumasuta.stamp.*;
 import com.knct_ci4_2025.kumasuta.stamp.StampView;
 
 public class MainActivity extends AppCompatActivity{
-
-    final static int STAMP_CARD_WID=3;
-    final static int STAMP_CARD_HEI=5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,14 +37,14 @@ public class MainActivity extends AppCompatActivity{
         setContentView(R.layout.activity_stamp_card);
         ConstraintLayout view=(ConstraintLayout)findViewById(R.id.stamp_home);
         TableLayout stamp_card_view=(TableLayout)findViewById(R.id.stamp_card);
-        Resources res=getBaseContext().getResources();
-        for (int i = 0; i < STAMP_CARD_HEI; i++) {
+        for (int i = 0; i < StampCard.STAMP_CARD_HEI; i++) {
             TableLayout.LayoutParams line_layout=new TableLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
             line_layout.weight=1;
-            TableRow stamp_card_line=(TableRow)stamp_card_view.getChildAt(i);
+            TableRow stamp_card_line=new TableRow(getBaseContext());
             stamp_card_line.setLayoutParams(line_layout);
-            for (int j = 0; j < STAMP_CARD_WID; j++) {
-                int index=i*STAMP_CARD_WID+j;
+            stamp_card_view.addView(stamp_card_line);
+            for (int j = 0; j < StampCard.STAMP_CARD_WID; j++) {
+                int index=i*StampCard.STAMP_CARD_WID+j;
                 TableRow.LayoutParams params=new TableRow.LayoutParams();
                 params.weight=1;
                 StampView stamp=new StampView(getBaseContext(),DataBase.card.getStamp(index));
