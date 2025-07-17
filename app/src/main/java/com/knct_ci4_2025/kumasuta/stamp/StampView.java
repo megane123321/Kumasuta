@@ -29,46 +29,64 @@ public class StampView extends ConstraintLayout {
     public ImageButton getButton(){
         return (ImageButton)button;
     }
+
+    public void setStamp(int id){
+        button.setStamp(id);
+    }
+
+    public void setStamp(Stamp stamp){
+        button.setStamp(stamp);
+    }
 }
 
 class StampButton extends AppCompatImageButton implements View.OnClickListener {
     public StampButton(Context context,Stamp stamp){
         super(context);
-        int drawable_id;
-        switch (stamp.id){
-            case StampId.STAMP_1:
-                drawable_id=R.drawable.stamp_1;
-            break;
-
-            case StampId.STAMP_2:
-                drawable_id=R.drawable.stamp_2;
-            break;
-
-            case StampId.STAMP_3:
-                drawable_id=R.drawable.stamp_3;
-            break;
-
-            case StampId.STAMP_4:
-                drawable_id=R.drawable.stamp_4;
-            break;
-
-            case StampId.STAMP_5:
-                drawable_id=R.drawable.stamp_5;
-            break;
-
-            default:
-                drawable_id=R.drawable.stamp_empty;
-            break;
-        }
-        if (drawable_id!=R.drawable.stamp_empty){
-            setImageResource(drawable_id);
-            setScaleType(ImageView.ScaleType.FIT_CENTER);
-        }
+        setStamp(stamp);
         setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view){
         System.out.println(view.toString());
+    }
+
+    public void setStamp(int id){
+        setStamp(new Stamp(id));
+    }
+
+    public void setStamp(Stamp stamp){
+        int drawable_id;
+        switch (stamp.id){
+            case StampId.STAMP_1:
+                drawable_id=R.drawable.stamp_1;
+                break;
+
+            case StampId.STAMP_2:
+                drawable_id=R.drawable.stamp_2;
+                break;
+
+            case StampId.STAMP_3:
+                drawable_id=R.drawable.stamp_3;
+                break;
+
+            case StampId.STAMP_4:
+                drawable_id=R.drawable.stamp_4;
+                break;
+
+            case StampId.STAMP_5:
+                drawable_id=R.drawable.stamp_5;
+                break;
+
+            default:
+                drawable_id=R.drawable.stamp_empty;
+                break;
+        }
+        if (drawable_id!=R.drawable.stamp_empty){
+            setImageResource(drawable_id);
+            setScaleType(ImageView.ScaleType.FIT_CENTER);
+        }else{
+            setImageDrawable(null);
+        }
     }
 }
