@@ -32,15 +32,11 @@ public class StampCard {
         return card.size();
     }
 
-    static int foo=0;
-
     public Stamp getStamp(int index){
-        foo++;
-        System.out.println(foo);
         try {
             return card.get(index);
         }catch (IndexOutOfBoundsException e){
-            return new Stamp(foo);
+            return new Stamp();
         }
     }
 }

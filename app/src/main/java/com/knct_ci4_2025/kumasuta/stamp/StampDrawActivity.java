@@ -9,8 +9,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.knct_ci4_2025.kumasuta.*;
 
 public class StampDrawActivity extends AppCompatActivity {
-    final static int STAMP_CARD_WID=3;
-    final static int STAMP_CARD_HEI=5;
 
     @Override
     protected void onCreate(Bundle bundle){

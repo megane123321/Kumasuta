@@ -15,6 +15,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.knct_ci4_2025.kumasuta.collection.CollectionActivity;
 import com.knct_ci4_2025.kumasuta.stamp.*;
 import com.knct_ci4_2025.kumasuta.stamp.StampView;
 
@@ -48,7 +49,7 @@ public class MainActivity extends AppCompatActivity{
         }
         ImageButton collectionButton=(ImageButton) findViewById(R.id.collection_button);
         collectionButton.setOnClickListener((v)->{
-            Intent intent=new Intent(getBaseContext(),StampDrawActivity.class);
+            Intent intent=new Intent(getBaseContext(), CollectionActivity.class);
             startActivity(intent);
         });
     }

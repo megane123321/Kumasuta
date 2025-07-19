@@ -24,6 +24,9 @@
         <activity
             android:name=".stamp.StampDrawActivity"
             android:exported="true"/>
+        <activity
+            android:name=".collection.CollectionActivity"
+            android:exported="true"/>
     </application>
 
 </manifest>

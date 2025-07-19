@@ -2,6 +2,7 @@ package com.knct_ci4_2025.kumasuta.stamp;
 
 import android.content.Context;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
@@ -10,7 +11,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.knct_ci4_2025.kumasuta.R;
 
-public class StampView extends ConstraintLayout {
+public class StampView extends FrameLayout {
     public StampView(Context context) {
         this(context, new Stamp());
     }
@@ -58,23 +59,23 @@ class StampButton extends AppCompatImageButton implements View.OnClickListener {
     public void setStamp(Stamp stamp){
         int drawable_id;
         switch (stamp.id){
-            case StampId.STAMP_1:
+            case STAMP_1:
                 drawable_id=R.drawable.stamp_1;
                 break;
 
-            case StampId.STAMP_2:
+            case STAMP_2:
                 drawable_id=R.drawable.stamp_2;
                 break;
 
-            case StampId.STAMP_3:
+            case STAMP_3:
                 drawable_id=R.drawable.stamp_3;
                 break;
 
-            case StampId.STAMP_4:
+            case STAMP_4:
                 drawable_id=R.drawable.stamp_4;
                 break;
 
-            case StampId.STAMP_5:
+            case STAMP_5:
                 drawable_id=R.drawable.stamp_5;
                 break;
 
