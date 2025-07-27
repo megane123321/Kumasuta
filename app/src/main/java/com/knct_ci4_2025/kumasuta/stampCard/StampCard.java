@@ -1,4 +1,6 @@
-package com.knct_ci4_2025.kumasuta.stamp;
+package com.knct_ci4_2025.kumasuta.stampCard;
+
+import com.knct_ci4_2025.kumasuta.stamp.Stamp;
 
 import java.util.ArrayList;
 import java.util.Collections;

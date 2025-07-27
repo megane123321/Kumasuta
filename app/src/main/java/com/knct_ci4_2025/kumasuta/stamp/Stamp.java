@@ -1,13 +1,17 @@
 package com.knct_ci4_2025.kumasuta.stamp;
 
 public class Stamp {
-    StampId id;
+    private StampId id;
     public Stamp(){
         this(StampId.STAMP_EMPTY);
     }
 
     public Stamp(StampId stampId){
         id=stampId;
+    }
+
+    public StampId getId(){
+        return id;
     }
 
     public Stamp(int stampId){

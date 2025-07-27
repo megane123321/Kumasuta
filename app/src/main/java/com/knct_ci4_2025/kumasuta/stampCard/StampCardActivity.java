@@ -1,4 +1,4 @@
-package com.knct_ci4_2025.kumasuta;
+package com.knct_ci4_2025.kumasuta.stampCard;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,11 +15,12 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.knct_ci4_2025.kumasuta.DataBase;
+import com.knct_ci4_2025.kumasuta.R;
 import com.knct_ci4_2025.kumasuta.collection.CollectionActivity;
-import com.knct_ci4_2025.kumasuta.stamp.*;
 import com.knct_ci4_2025.kumasuta.stamp.StampView;
 
-public class MainActivity extends AppCompatActivity{
+public class StampCardActivity extends AppCompatActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +32,6 @@ public class MainActivity extends AppCompatActivity{
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        ConstraintLayout view=(ConstraintLayout)findViewById(R.id.stamp_home);
         TableLayout stamp_card_view=(TableLayout)findViewById(R.id.stamp_card);
         for (int i = 0; i < StampCard.STAMP_CARD_HEI; i++) {
             TableLayout.LayoutParams line_layout=new TableLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity{
             for (int j = 0; j < StampCard.STAMP_CARD_WID; j++) {
                 TableRow.LayoutParams params=new TableRow.LayoutParams();
                 params.weight=1;
-                StampView stamp=new StampView(getBaseContext());
+                StampView stamp=new StampInCard(getBaseContext());
                 stamp.setLayoutParams(params);
                 stamp_card_line.addView(stamp);
             }
@@ -63,11 +63,11 @@ public class MainActivity extends AppCompatActivity{
             TableRow stamp_card_line=(TableRow)stamp_card_view.getChildAt(i);
             for (int j = 0; j < StampCard.STAMP_CARD_WID; j++) {
                 int index=i*StampCard.STAMP_CARD_WID+j;
-                ((StampView)stamp_card_line.getChildAt(j)).setStamp(DataBase.card.getStamp(index));
+                ((StampView)stamp_card_line.getChildAt(j)).setStamp(DataBase.getCard().getStamp(index));
             }
         }
         TextView stamp_num=(TextView)findViewById(R.id.stampNum);
-        stamp_num.setText(String.format(getString(R.string.stamp_num),DataBase.card.getStampsNum()));
+        stamp_num.setText(String.format(getString(R.string.stamp_num),DataBase.getCard().getStampsNum()));
         setContentView(view);
     }
 }
