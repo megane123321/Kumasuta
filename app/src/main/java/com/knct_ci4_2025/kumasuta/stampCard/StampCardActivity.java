@@ -17,10 +17,11 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.knct_ci4_2025.kumasuta.DataBase;
 import com.knct_ci4_2025.kumasuta.R;
+import com.knct_ci4_2025.kumasuta.Reader.StampReadActivity;
 import com.knct_ci4_2025.kumasuta.collection.CollectionActivity;
 import com.knct_ci4_2025.kumasuta.stamp.StampView;
 
-public class StampCardActivity extends AppCompatActivity{
+public class StampCardActivity extends StampReadActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

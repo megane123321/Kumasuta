@@ -16,9 +16,10 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.knct_ci4_2025.kumasuta.DataBase;
 import com.knct_ci4_2025.kumasuta.R;
+import com.knct_ci4_2025.kumasuta.Reader.StampReadActivity;
 import com.knct_ci4_2025.kumasuta.stamp.StampView;
 
-public class CollectionActivity extends AppCompatActivity {
+public class CollectionActivity extends StampReadActivity {
     final static int COLLECTION_WID=2;
 
     @Override
