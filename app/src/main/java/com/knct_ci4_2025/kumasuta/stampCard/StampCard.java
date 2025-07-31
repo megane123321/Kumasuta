@@ -1,5 +1,6 @@
 package com.knct_ci4_2025.kumasuta.stampCard;
 
+import com.knct_ci4_2025.kumasuta.DataBase;
 import com.knct_ci4_2025.kumasuta.stamp.Stamp;
 
 import java.util.ArrayList;
@@ -25,6 +26,7 @@ public class StampCard {
     public void addStamp(Stamp stamp){
         if(getStampsNum()<STAMP_NUM) {
             card.add(stamp);
+            DataBase.stampUnlock(DataBase.getIntId(stamp.getId()));
         }
     }
 

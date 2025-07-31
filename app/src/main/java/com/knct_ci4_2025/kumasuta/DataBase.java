@@ -56,6 +56,12 @@ public class DataBase {
         return false;
     }
 
+    public static void stampUnlock(int id){
+        if(inStampId(id)){
+            unlocked[id]=true;
+        }
+    }
+
     public static int getIntId(StampId id){
         StampId[] tmp=StampId.values();
         for (int i=1;i<tmp.length;i++){

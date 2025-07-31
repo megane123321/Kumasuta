@@ -79,7 +79,7 @@ public class CollectionActivity extends StampReadActivity {
             for (int j = 0; j < COLLECTION_WID; j++) {
                 int index=i*COLLECTION_WID+j;
                 if(index<DataBase.STAMP_VAL) {
-                    if(DataBase.getUnlocked(index)||true) {
+                    if(DataBase.getUnlocked(index)) {
                         StampView view = (StampView) line.getChildAt(j);
                         view.setStamp(index+1);
                     }
