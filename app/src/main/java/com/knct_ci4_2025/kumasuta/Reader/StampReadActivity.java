@@ -20,6 +20,8 @@ import com.knct_ci4_2025.kumasuta.DataBase;
 import com.knct_ci4_2025.kumasuta.R;
 import com.knct_ci4_2025.kumasuta.collection.CollectionActivity;
 
+import org.json.JSONObject;
+
 import java.io.IOException;
 
 public abstract class StampReadActivity extends AppCompatActivity implements NfcAdapter.ReaderCallback{
@@ -35,15 +37,19 @@ public abstract class StampReadActivity extends AppCompatActivity implements Nfc
             ndef.connect();
             NdefMessage result=ndef.getNdefMessage();
             ndef.close();
+            if(new String(result.getRecords()[0].getPayload()).equals(getString(R.string.app_name))){
+                JSONObject json=new JSONObject(new String(result.getRecords()[1].getPayload()));
+                int stamp_id=json.getInt("stamp_id");
+                DataBase.getCard().addStamp(stamp_id);
+                Intent intent=new Intent(this,this.getClass());
+                finish();
+                startActivity(intent);
+            }
             for(NdefRecord i:result.getRecords()) {
                 String str=new String(i.getPayload());
                 System.out.println(str);
-                DataBase.getCard().addStamp(Integer.parseInt(str.substring(str.indexOf(':')+1).trim()));
-                startActivity(new Intent(getBaseContext(), CollectionActivity.class));
             }
-        } catch (IOException e) {
-            System.err.println(e.toString());
-        } catch (FormatException e) {
+        } catch (Exception e) {
             System.err.println(e.toString());
         }finally {
             try{
