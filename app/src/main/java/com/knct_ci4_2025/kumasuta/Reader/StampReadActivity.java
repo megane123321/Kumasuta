@@ -6,6 +6,7 @@ import android.nfc.NdefMessage;
 import android.nfc.NdefRecord;
 import android.nfc.NfcAdapter;
 import android.nfc.Tag;
+import android.nfc.tech.Ndef;
 import android.nfc.tech.NfcA;
 import android.os.Bundle;
 
@@ -15,7 +16,9 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.knct_ci4_2025.kumasuta.DataBase;
 import com.knct_ci4_2025.kumasuta.R;
+import com.knct_ci4_2025.kumasuta.collection.CollectionActivity;
 
 import java.io.IOException;
 
@@ -25,38 +28,30 @@ public abstract class StampReadActivity extends AppCompatActivity implements Nfc
         super();
     }
 
-    private NfcAdapter nfcAdapter;
-
     @Override
     public void onTagDiscovered(Tag tag){
-        System.out.println(getString(R.string.app_name));
-        NfcA nfcA=NfcA.get(tag);
+        Ndef ndef=Ndef.get(tag);
         try {
-            nfcA.connect();
-            byte[] result = nfcA.transceive(new byte[nfcA.getMaxTransceiveLength()]);
-            for(byte tmp:result){
-                System.out.println(tmp);
+            ndef.connect();
+            NdefMessage result=ndef.getNdefMessage();
+            ndef.close();
+            for(NdefRecord i:result.getRecords()) {
+                String str=new String(i.getPayload());
+                System.out.println(str);
+                DataBase.getCard().addStamp(Integer.parseInt(str.substring(str.indexOf(':')+1).trim()));
+                startActivity(new Intent(getBaseContext(), CollectionActivity.class));
             }
-            nfcA.close();
         } catch (IOException e) {
             System.err.println(e.toString());
-            e.printStackTrace();
+        } catch (FormatException e) {
+            System.err.println(e.toString());
         }finally {
             try{
-                nfcA.close();
+                ndef.close();
             } catch (IOException e) {
                 System.err.println(e.toString());
             }
         }
-//        try {
-//            NdefMessage reader = new NdefMessage(tag.getId());
-//            NdefRecord[] records=reader.getRecords();
-//            for(NdefRecord tmp:records){
-//                System.out.println(tmp.toMimeType());
-//            }
-//        }catch (FormatException e){
-//            System.err.println(e+"\n正常に読み込めませんでした。");
-//        }
     }
 
     @Override
@@ -67,7 +62,6 @@ public abstract class StampReadActivity extends AppCompatActivity implements Nfc
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        nfcAdapter=NfcAdapter.getDefaultAdapter(this);
-        nfcAdapter.enableReaderMode(this,this,NfcAdapter.FLAG_READER_NFC_A,null);
+        NfcAdapter.getDefaultAdapter(this).enableReaderMode(this,this,NfcAdapter.FLAG_READER_NFC_A,null);
     }
 }

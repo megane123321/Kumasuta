@@ -23,7 +23,9 @@ public class StampCard {
     }
 
     public void addStamp(Stamp stamp){
-        card.add(stamp);
+        if(getStampsNum()<STAMP_NUM) {
+            card.add(stamp);
+        }
     }
 
     public void addStamp(int id){
